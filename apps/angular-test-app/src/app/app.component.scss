@@ -3,6 +3,10 @@
     width: 100%;
 }
 
+.uxg-nav {
+  height: 100vh;
+}
+
 .uxg-nav-header {
     display: flex;
     flex-direction: column;
@@ -17,7 +21,7 @@
 }
 
 .app-content {
-    height: 100%;
+    height: calc(100% - 56px);
+    padding: 0;
     background: linear-gradient(180deg,#ebebeb 0,#fafafa 5%,#fafafa 100%);
-    padding: 2vw;
 }

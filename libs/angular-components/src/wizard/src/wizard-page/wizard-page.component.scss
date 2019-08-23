@@ -1,0 +1,17 @@
+:host {
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  top: 12%;
+  right: 2rem;
+  left: 0;
+  &[aria-hidden='true'] {
+    z-index: 0;
+  }
+  &.active {
+    z-index: 1;
+  }
+}
