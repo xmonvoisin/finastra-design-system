@@ -7,6 +7,8 @@ import { HomeComponent } from './components/home/home.component';
 import { GlobalSearchDemoComponent } from './components/global-search-demo/global-search-demo.component';
 
 import { routes } from './routes';
+import { VectorMapDemoComponent } from './components/vector-map-demo/vector-map-demo.component';
+import { VectorMapModule } from '@ffdc/uxg-angular-components/vector-map';
 
 @NgModule({
   imports: [
@@ -17,10 +19,12 @@ import { routes } from './routes';
     MatChipsModule,
     MatFormFieldModule,
     MatInputModule,
+    VectorMapModule
   ],
   declarations: [
     HomeComponent,
-    GlobalSearchDemoComponent
+    GlobalSearchDemoComponent,
+    VectorMapDemoComponent
   ],
   exports: [RouterModule]
 })

@@ -13,6 +13,11 @@
                   <p>Global Search</p>
               </a>
           </mat-nav-list>
+          <mat-nav-list  class="uxg-nav-list" (click)="sidenav.toggle()" dense>
+              <a mat-list-item routerLink="/vector-map" routerLinkActive="uxg-list-item-selected">
+                  <p>Vector Map</p>
+              </a>
+          </mat-nav-list>
       </mat-sidenav>
 
       <mat-sidenav-content>

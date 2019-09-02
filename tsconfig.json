@@ -32,6 +32,9 @@
       ],
       "@ffdc/uxg-angular-components/scroll-to-top": [
         "libs/angular-components/src/scroll-to-top/src/index.ts"
+      ],
+      "@ffdc/uxg-angular-components/vector-map": [
+        "libs/angular-components/src/vector-map/src/index.ts"
       ]
     }
   },
