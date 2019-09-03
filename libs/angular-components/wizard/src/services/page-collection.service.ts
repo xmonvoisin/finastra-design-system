@@ -3,7 +3,6 @@ import { UxgWizardPage } from '../wizard-page/wizard-page.component';
 
 @Injectable()
 export class PageCollectionService {
-
   public pages: QueryList<UxgWizardPage>;
 
   public get pagesAsArray(): UxgWizardPage[] {
@@ -126,7 +125,7 @@ export class PageCollectionService {
     let previousPage: UxgWizardPage;
 
     let valid = false;
-    while (previousPageIndex >=0) {
+    while (previousPageIndex >= 0) {
       previousPage = this.getPageByIndex(previousPageIndex);
       if (previousPage.disabled) {
         previousPageIndex--;
@@ -163,8 +162,8 @@ export class PageCollectionService {
       return null;
     }
 
-    return nextPage;;
+    return nextPage;
   }
 
-  constructor() { }
+  constructor() {}
 }

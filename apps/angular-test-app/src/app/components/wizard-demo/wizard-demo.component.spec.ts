@@ -9,10 +9,9 @@ describe('WizardDemoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ WizardModule ],
-      declarations: [ WizardDemoComponent ]
-    })
-    .compileComponents();
+      imports: [WizardModule],
+      declarations: [WizardDemoComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -8,9 +8,8 @@ describe('UxgWizardPage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UxgWizardPage ]
-    })
-    .compileComponents();
+      declarations: [UxgWizardPage]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

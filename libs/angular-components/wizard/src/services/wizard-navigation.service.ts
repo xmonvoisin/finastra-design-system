@@ -6,7 +6,6 @@ import { ButtonHubService } from './button-hub.service';
 
 @Injectable()
 export class WizardNavigationService implements OnDestroy {
-
   public previousButtonSubscription: Subscription;
 
   public nextButtonSubscription: Subscription;
@@ -61,10 +60,7 @@ export class WizardNavigationService implements OnDestroy {
     this.currentPage = this.pageCollection.pagesAsArray[0];
   }
 
-  constructor(
-    public pageCollection: PageCollectionService,
-    public buttonService: ButtonHubService
-  ) {
+  constructor(public pageCollection: PageCollectionService, public buttonService: ButtonHubService) {
     this.previousButtonSubscription = this.buttonService.previousButtonClicked.subscribe(() => {
       const currentPage = this.currentPage;
       if (this.currentPageIsFirst || currentPage.previousStepDisabled) {
@@ -98,7 +94,6 @@ export class WizardNavigationService implements OnDestroy {
     return this._wizardDone.asObservable();
   }
 
-
   public get wizardCancel(): Observable<any> {
     return this._wizardCancel.asObservable();
   }
@@ -106,7 +101,6 @@ export class WizardNavigationService implements OnDestroy {
   public cancel() {
     this._wizardCancel.next();
   }
-
 
   public get movedToNextPage(): Observable<boolean> {
     return this._movedToNextPage.asObservable();
@@ -144,7 +138,6 @@ export class WizardNavigationService implements OnDestroy {
     } else if (isNext) {
       currentPage.nextButtonClicked.emit();
     }
-
 
     //TODO: stuff
 

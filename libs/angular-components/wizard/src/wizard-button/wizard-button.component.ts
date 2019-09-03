@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  Output,
-  EventEmitter
-} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { WizardNavigationService } from '../services/wizard-navigation.service';
 import { ButtonHubService } from '../services/button-hub.service';
 
@@ -32,14 +26,9 @@ export class UxgWizardButton implements OnInit {
 
   @Input('uxgWizardButtonHidden') public hidden: boolean = false;
 
-  @Output('uxgWizardButtonClicked') wasClicked = new EventEmitter<string>(
-    false
-  );
+  @Output('uxgWizardButtonClicked') wasClicked = new EventEmitter<string>(false);
 
-  constructor(
-    public navService: WizardNavigationService,
-    public buttonService: ButtonHubService
-  ) {}
+  constructor(public navService: WizardNavigationService, public buttonService: ButtonHubService) {}
 
   private checkDefaultType(value: string = '', type: string) {
     if (DEFAULT_BUTTON_TYPES[type] === value) {
@@ -81,10 +70,7 @@ export class UxgWizardButton implements OnInit {
       return !disabled;
     }
 
-    if (
-      this.isPrevious &&
-      (nav.currentPageIsFirst || page.previousStepDisabled)
-    ) {
+    if (this.isPrevious && (nav.currentPageIsFirst || page.previousStepDisabled)) {
       return disabled;
     }
 

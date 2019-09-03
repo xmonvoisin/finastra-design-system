@@ -8,9 +8,8 @@ describe('UxgWizardButton', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UxgWizardButton ]
-    })
-    .compileComponents();
+      declarations: [UxgWizardButton]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

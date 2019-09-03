@@ -8,7 +8,25 @@ import { UxgWizardPage } from './wizard-page/wizard-page.component';
 import { UxgWizard, UxgWizardTitle } from './wizard.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDialogModule, MatDividerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatPaginatorModule, MatSelectModule, MatSidenavModule, MatTreeModule } from '@angular/material';
+import {
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatPaginatorModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatTreeModule
+} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -34,14 +52,14 @@ import { MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardM
     MatPaginatorModule,
     MatDialogModule
   ],
-  declarations: [UxgWizard, UxgWizardTitle, UxgWizardPage, UxgWizardPageTitle, UxgWizardPageDescription, UxgWizardButton],
-  exports: [
+  declarations: [
     UxgWizard,
     UxgWizardTitle,
     UxgWizardPage,
     UxgWizardPageTitle,
     UxgWizardPageDescription,
     UxgWizardButton
-  ]
+  ],
+  exports: [UxgWizard, UxgWizardTitle, UxgWizardPage, UxgWizardPageTitle, UxgWizardPageDescription, UxgWizardButton]
 })
-export class WizardModule { }
+export class WizardModule {}

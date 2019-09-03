@@ -12,6 +12,5 @@ export class WizardDemoComponent implements OnInit {
 
   title: 'UXG Wizard Demo';
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

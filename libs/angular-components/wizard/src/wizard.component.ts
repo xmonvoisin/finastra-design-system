@@ -1,4 +1,12 @@
-import { AfterContentInit, Component, ContentChildren, EventEmitter, OnDestroy, Output, QueryList } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  EventEmitter,
+  OnDestroy,
+  Output,
+  QueryList
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { wizardAnimation } from './animations';
 import { ButtonHubService } from './services/button-hub.service';
@@ -17,7 +25,6 @@ import { UxgWizardPage } from './wizard-page/wizard-page.component';
   animations: [wizardAnimation()]
 })
 export class UxgWizard implements OnDestroy, AfterContentInit {
-
   @ContentChildren(UxgWizardPage) pages: QueryList<UxgWizardPage>;
 
   @Output('uxgWizardOnCancel') onCancel = new EventEmitter<any>(false);
@@ -61,11 +68,7 @@ export class UxgWizard implements OnDestroy, AfterContentInit {
     public pageCollection: PageCollectionService,
     public buttonService: ButtonHubService
   ) {
-    this.subscriptions.push(
-      this.listenForCancelChanges(),
-      this.listenForDoneChanges(),
-      this.listenForPageChanges()
-    );
+    this.subscriptions.push(this.listenForCancelChanges(), this.listenForDoneChanges(), this.listenForPageChanges());
   }
 
   ngOnDestroy() {
@@ -87,14 +90,15 @@ export class UxgWizard implements OnDestroy, AfterContentInit {
   private listenForPageChanges(): Subscription {
     return this.navService.currentPageChange.subscribe(page => {
       this.currentPageId = this.pageCollection.getPageIndex(page);
-      this.currentPageChange.emit()
+      this.currentPageChange.emit();
     });
   }
 }
 
 @Component({
   selector: 'uxg-wizard-title',
-  template: `<ng-content></ng-content>`,
+  template: `
+    <ng-content></ng-content>
+  `
 })
-export class UxgWizardTitle {
-}
+export class UxgWizardTitle {}

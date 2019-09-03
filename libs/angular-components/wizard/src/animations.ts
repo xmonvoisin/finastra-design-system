@@ -1,11 +1,4 @@
-import {
-  animate,
-  query,
-  style,
-  transition,
-  trigger,
-  group
-} from '@angular/animations';
+import { animate, query, style, transition, trigger, group } from '@angular/animations';
 
 export function wizardAnimation() {
   return trigger('wizardAnimation', [

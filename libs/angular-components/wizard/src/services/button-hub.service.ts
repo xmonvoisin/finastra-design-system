@@ -3,7 +3,6 @@ import { Subject, Observable } from 'rxjs';
 
 @Injectable()
 export class ButtonHubService {
-
   public buttonsReady = false;
 
   private _previousButtonClicked = new Subject<any>();

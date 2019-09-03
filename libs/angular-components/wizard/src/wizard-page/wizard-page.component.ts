@@ -15,11 +15,10 @@ import { UxgWizardPageTitle } from './wizard-page-title.directive';
     '[attr.aria-hidden]': '!current',
     '[attr.aria-labelledby]': 'stepItemId',
     '[class.active]': 'current',
-    '[class.uxg-wizard-page]': 'true',
+    '[class.uxg-wizard-page]': 'true'
   }
 })
 export class UxgWizardPage implements OnInit {
-
   @Output('uxgWizardPageOnLoad') onLoad: EventEmitter<string> = new EventEmitter();
 
   @Output('uxgWizardPageNext') nextButtonClicked: EventEmitter<UxgWizardPage> = new EventEmitter();
@@ -122,7 +121,5 @@ export class UxgWizardPage implements OnInit {
     return this.pageDescription.pageDescriptionTemplateRef;
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

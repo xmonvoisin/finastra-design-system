@@ -1,65 +1,105 @@
-<uxg-wizard
-    (uxgWizardOnCancel)="back()"
-    (uxgWizardOnDone)="save()">
-    <uxg-wizard-title>{{title}}</uxg-wizard-title>
+<uxg-wizard (uxgWizardOnCancel)="back()" (uxgWizardOnDone)="save()">
+  <uxg-wizard-title>{{ title }}</uxg-wizard-title>
 
-    <!--buttons-->
-    <uxg-wizard-button [type]="'cancel'">Cancel</uxg-wizard-button>
-    <uxg-wizard-button [type]="'previous'">
-      <mat-icon>chevron_left</mat-icon>
-      Back</uxg-wizard-button>
-    <uxg-wizard-button [type]="'next'">Next</uxg-wizard-button>
-    <uxg-wizard-button [type]="'done'">Save</uxg-wizard-button>
+  <!--buttons-->
+  <uxg-wizard-button [type]="'cancel'">Cancel</uxg-wizard-button>
+  <uxg-wizard-button [type]="'previous'">
+    <mat-icon>chevron_left</mat-icon>
+    Back</uxg-wizard-button
+  >
+  <uxg-wizard-button [type]="'next'">Next</uxg-wizard-button>
+  <uxg-wizard-button [type]="'done'">Save</uxg-wizard-button>
 
-    <!--pages-->
-    <uxg-wizard-page [uxgWizardPageNextDisabled]="false">
-        <ng-template uxgWizardPageTitle>Details</ng-template>
-        <ng-template uxgWizardPageDescription>
-          Name your application, add relevant description and upload a logo and/or cover
-        </ng-template>
-      Page 1
-    </uxg-wizard-page>
+  <!--pages-->
+  <uxg-wizard-page [uxgWizardPageNextDisabled]="false">
+    <ng-template uxgWizardPageTitle>Details</ng-template>
+    <ng-template uxgWizardPageDescription>
+      Name your application, add relevant description and upload a logo and/or cover
+    </ng-template>
+    Page 1
+  </uxg-wizard-page>
 
-    <uxg-wizard-page>
-        <ng-template uxgWizardPageTitle>APIs</ng-template>
-        <ng-template uxgWizardPageDescription>
-          Choose the APIs that you want to assign to your application
-        </ng-template>
-        Page 2
-      </uxg-wizard-page>
+  <uxg-wizard-page>
+    <ng-template uxgWizardPageTitle>APIs</ng-template>
+    <ng-template uxgWizardPageDescription>
+      Choose the APIs that you want to assign to your application
+    </ng-template>
+    Page 2
+  </uxg-wizard-page>
 
-    <uxg-wizard-page [uxgWizardPageDisabled]="true">
-      <ng-template uxgWizardPageTitle>Terms and Conditions</ng-template>
-      <ng-template uxgWizardPageDescription>
-        Accept the terms and conditions for the APIs you have selected
-      </ng-template>
-      <ng-container *ngTemplateOutlet="lorem"></ng-container>
-    </uxg-wizard-page>
+  <uxg-wizard-page [uxgWizardPageDisabled]="true">
+    <ng-template uxgWizardPageTitle>Terms and Conditions</ng-template>
+    <ng-template uxgWizardPageDescription>
+      Accept the terms and conditions for the APIs you have selected
+    </ng-template>
+    <ng-container *ngTemplateOutlet="lorem"></ng-container>
+  </uxg-wizard-page>
 
-    <uxg-wizard-page>
-      <ng-template uxgWizardPageTitle>Summary</ng-template>
-      <ng-template uxgWizardPageDescription>
-        Check that everything is correct before creating your application
-      </ng-template>
-      <ng-container *ngTemplateOutlet="lorem"></ng-container>
-    </uxg-wizard-page>
+  <uxg-wizard-page>
+    <ng-template uxgWizardPageTitle>Summary</ng-template>
+    <ng-template uxgWizardPageDescription>
+      Check that everything is correct before creating your application
+    </ng-template>
+    <ng-container *ngTemplateOutlet="lorem"></ng-container>
+  </uxg-wizard-page>
 
-    <!--<uxg-wizard-page>
+  <!--<uxg-wizard-page>
       <ng-template uxgWizardPageTitle>Title for Page 5</ng-template>
       <ng-container *ngTemplateOutlet="lorem"></ng-container>
     </uxg-wizard-page>-->
-  </uxg-wizard>
+</uxg-wizard>
 
-  <ng-template #lorem>
-    <div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum pulvinar etiam non quam. Sem integer vitae justo eget magna. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Integer vitae justo eget magna. Leo a diam sollicitudin tempor. Posuere lorem ipsum dolor sit amet. Dictum fusce ut placerat orci nulla pellentesque. Platea dictumst quisque sagittis purus sit amet volutpat consequat mauris. Cursus metus aliquam eleifend mi. Maecenas accumsan lacus vel facilisis volutpat. Viverra mauris in aliquam sem fringilla ut morbi.</p>
+<ng-template #lorem>
+  <div>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Elementum pulvinar etiam non quam. Sem integer vitae justo eget magna. Vestibulum mattis ullamcorper
+      velit sed ullamcorper morbi. Integer vitae justo eget magna. Leo a diam sollicitudin tempor. Posuere lorem ipsum
+      dolor sit amet. Dictum fusce ut placerat orci nulla pellentesque. Platea dictumst quisque sagittis purus sit amet
+      volutpat consequat mauris. Cursus metus aliquam eleifend mi. Maecenas accumsan lacus vel facilisis volutpat.
+      Viverra mauris in aliquam sem fringilla ut morbi.
+    </p>
 
-        <p>Diam in arcu cursus euismod quis. Commodo odio aenean sed adipiscing. Interdum velit laoreet id donec ultrices tincidunt. Ac tincidunt vitae semper quis lectus. Cursus metus aliquam eleifend mi. Ac tortor dignissim convallis aenean et. Donec et odio pellentesque diam volutpat commodo. Odio facilisis mauris sit amet massa vitae tortor condimentum. Dictum at tempor commodo ullamcorper a lacus vestibulum sed. Etiam dignissim diam quis enim lobortis. Nisi porta lorem mollis aliquam ut. Maecenas sed enim ut sem viverra aliquet eget sit. Elit eget gravida cum sociis natoque. Urna porttitor rhoncus dolor purus non enim praesent. Eleifend quam adipiscing vitae proin sagittis nisl rhoncus.</p>
+    <p>
+      Diam in arcu cursus euismod quis. Commodo odio aenean sed adipiscing. Interdum velit laoreet id donec ultrices
+      tincidunt. Ac tincidunt vitae semper quis lectus. Cursus metus aliquam eleifend mi. Ac tortor dignissim convallis
+      aenean et. Donec et odio pellentesque diam volutpat commodo. Odio facilisis mauris sit amet massa vitae tortor
+      condimentum. Dictum at tempor commodo ullamcorper a lacus vestibulum sed. Etiam dignissim diam quis enim lobortis.
+      Nisi porta lorem mollis aliquam ut. Maecenas sed enim ut sem viverra aliquet eget sit. Elit eget gravida cum
+      sociis natoque. Urna porttitor rhoncus dolor purus non enim praesent. Eleifend quam adipiscing vitae proin
+      sagittis nisl rhoncus.
+    </p>
 
-        <p>Mauris sit amet massa vitae tortor condimentum. Varius quam quisque id diam. Egestas pretium aenean pharetra magna ac placerat vestibulum lectus mauris. Nulla facilisi morbi tempus iaculis urna. Faucibus in ornare quam viverra orci. Orci dapibus ultrices in iaculis nunc. Pellentesque pulvinar pellentesque habitant morbi tristique. Sed augue lacus viverra vitae congue eu. Massa tincidunt dui ut ornare lectus sit amet est placerat. Suscipit adipiscing bibendum est ultricies integer quis. Nec sagittis aliquam malesuada bibendum arcu vitae. Nulla at volutpat diam ut. Amet mauris commodo quis imperdiet. Cum sociis natoque penatibus et magnis. Varius morbi enim nunc faucibus a pellentesque sit. Sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque eu. Adipiscing enim eu turpis egestas pretium aenean pharetra magna ac.</p>
+    <p>
+      Mauris sit amet massa vitae tortor condimentum. Varius quam quisque id diam. Egestas pretium aenean pharetra magna
+      ac placerat vestibulum lectus mauris. Nulla facilisi morbi tempus iaculis urna. Faucibus in ornare quam viverra
+      orci. Orci dapibus ultrices in iaculis nunc. Pellentesque pulvinar pellentesque habitant morbi tristique. Sed
+      augue lacus viverra vitae congue eu. Massa tincidunt dui ut ornare lectus sit amet est placerat. Suscipit
+      adipiscing bibendum est ultricies integer quis. Nec sagittis aliquam malesuada bibendum arcu vitae. Nulla at
+      volutpat diam ut. Amet mauris commodo quis imperdiet. Cum sociis natoque penatibus et magnis. Varius morbi enim
+      nunc faucibus a pellentesque sit. Sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque eu.
+      Adipiscing enim eu turpis egestas pretium aenean pharetra magna ac.
+    </p>
 
-        <p>Sed sed risus pretium quam vulputate. Libero justo laoreet sit amet cursus. Malesuada pellentesque elit eget gravida cum sociis natoque penatibus et. Pellentesque habitant morbi tristique senectus. Odio morbi quis commodo odio aenean sed adipiscing diam. Ac orci phasellus egestas tellus rutrum. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. Nec nam aliquam sem et tortor. Nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper. In nibh mauris cursus mattis molestie a iaculis at. Urna duis convallis convallis tellus. Nibh tortor id aliquet lectus proin. Felis eget velit aliquet sagittis id. Sit amet mauris commodo quis. Ut tortor pretium viverra suspendisse potenti. At auctor urna nunc id. Faucibus turpis in eu mi bibendum neque. Eleifend quam adipiscing vitae proin sagittis nisl rhoncus. Nullam eget felis eget nunc lobortis mattis.</p>
+    <p>
+      Sed sed risus pretium quam vulputate. Libero justo laoreet sit amet cursus. Malesuada pellentesque elit eget
+      gravida cum sociis natoque penatibus et. Pellentesque habitant morbi tristique senectus. Odio morbi quis commodo
+      odio aenean sed adipiscing diam. Ac orci phasellus egestas tellus rutrum. Ultrices tincidunt arcu non sodales
+      neque sodales ut etiam sit. Nec nam aliquam sem et tortor. Nisl nunc mi ipsum faucibus vitae aliquet nec
+      ullamcorper. In nibh mauris cursus mattis molestie a iaculis at. Urna duis convallis convallis tellus. Nibh tortor
+      id aliquet lectus proin. Felis eget velit aliquet sagittis id. Sit amet mauris commodo quis. Ut tortor pretium
+      viverra suspendisse potenti. At auctor urna nunc id. Faucibus turpis in eu mi bibendum neque. Eleifend quam
+      adipiscing vitae proin sagittis nisl rhoncus. Nullam eget felis eget nunc lobortis mattis.
+    </p>
 
-        <p>Mattis vulputate enim nulla aliquet. Id interdum velit laoreet id donec ultrices tincidunt arcu non. Quis auctor elit sed vulputate mi sit amet mauris commodo. Ultrices in iaculis nunc sed augue lacus viverra vitae. Neque aliquam vestibulum morbi blandit. Lobortis feugiat vivamus at augue eget arcu dictum varius. Netus et malesuada fames ac turpis egestas integer eget. Pharetra magna ac placerat vestibulum lectus mauris ultrices. Adipiscing bibendum est ultricies integer quis. Leo a diam sollicitudin tempor. Commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Urna molestie at elementum eu. Leo urna molestie at elementum eu facilisis sed odio morbi. Cursus risus at ultrices mi tempus imperdiet nulla. Risus in hendrerit gravida rutrum quisque non tellus orci.</p>
-    </div>
-  </ng-template>
+    <p>
+      Mattis vulputate enim nulla aliquet. Id interdum velit laoreet id donec ultrices tincidunt arcu non. Quis auctor
+      elit sed vulputate mi sit amet mauris commodo. Ultrices in iaculis nunc sed augue lacus viverra vitae. Neque
+      aliquam vestibulum morbi blandit. Lobortis feugiat vivamus at augue eget arcu dictum varius. Netus et malesuada
+      fames ac turpis egestas integer eget. Pharetra magna ac placerat vestibulum lectus mauris ultrices. Adipiscing
+      bibendum est ultricies integer quis. Leo a diam sollicitudin tempor. Commodo quis imperdiet massa tincidunt nunc
+      pulvinar sapien. Urna molestie at elementum eu. Leo urna molestie at elementum eu facilisis sed odio morbi. Cursus
+      risus at ultrices mi tempus imperdiet nulla. Risus in hendrerit gravida rutrum quisque non tellus orci.
+    </p>
+  </div>
+</ng-template>
