@@ -1,19 +1,26 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-import { MatIconModule, MatToolbarModule, MatButtonModule, MatListModule, MatSidenavModule, MatCardModule } from '@angular/material';
-import { GlobalSearchModule } from '@ffdc/uxg-angular-components/global-search';
+import {
+  MatIconModule,
+  MatToolbarModule,
+  MatButtonModule,
+  MatListModule,
+  MatSidenavModule,
+  MatCardModule
+} from '@angular/material';
+
+import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+
 import { WizardModule } from '@ffdc/uxg-angular-components/wizard';
+import { GlobalSearchModule } from '@ffdc/uxg-angular-components/global-search';
+import { TableModule } from '@ffdc/uxg-angular-components/table';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     CommonModule,
-    BrowserModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
@@ -23,9 +30,10 @@ import { WizardModule } from '@ffdc/uxg-angular-components/wizard';
     AppRoutingModule,
     MatCardModule,
     GlobalSearchModule,
+    TableModule,
     WizardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
