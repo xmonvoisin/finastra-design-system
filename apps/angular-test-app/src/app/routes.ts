@@ -4,7 +4,7 @@ import { GlobalSearchDemoComponent } from './components/global-search-demo/globa
 import { VectorMapDemoComponent } from './components/vector-map-demo/vector-map-demo.component';
 
 export const routes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'global-search', component: GlobalSearchDemoComponent },
-    { path: 'vector-map', component: VectorMapDemoComponent}
+  { path: '', component: HomeComponent },
+  { path: 'global-search', component: GlobalSearchDemoComponent },
+  { path: 'vector-map', component: VectorMapDemoComponent }
 ];

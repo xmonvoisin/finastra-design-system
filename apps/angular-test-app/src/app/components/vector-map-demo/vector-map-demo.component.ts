@@ -1,10 +1,14 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: 'ffdc-vector-map-demo',
-    templateUrl: './vector-map-demo.template.html'
+  selector: 'ffdc-vector-map-demo',
+  templateUrl: './vector-map-demo.template.html'
 })
+export class VectorMapDemoComponent {
+  locale: string = '["FR","LU"]' ;
 
-export class VectorMapDemoComponent{
-    
+  change(){
+    this.locale = '["LU"]'
+  }
 }
+
