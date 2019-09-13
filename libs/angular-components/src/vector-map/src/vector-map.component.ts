@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'uxg-vector-map',
@@ -6,25 +6,20 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
   styleUrls: ['./vector-map.component.scss']
 })
 
-export class VectorMapComponent implements OnInit, OnDestroy {
+export class VectorMapComponent implements OnInit, OnDestroy,OnChanges {
   @Input() countries : any;
   @Input() values : number;
   @Input() width: number;
   @Input() height : number;
   @Input() text : any;
-  @Input() title:any;
+  @Input() colorbarTitle:any;
+  @Input() colorbarColorMin: any;
+  @Input() colorbarColorMax: any;
+
 
   graph: any;
-  ngOnInit() {
+  constructor() {
     this.graph = {
-      data: [{
-        type:'choropleth',
-        locationmode:'ISO-3',
-        locations: this.countries,
-        z:this.values,
-        text: this.text,
-        autocolorscale: true
-      }],
       layout:{
         width: this.width,
         height: this.height,
@@ -37,7 +32,31 @@ export class VectorMapComponent implements OnInit, OnDestroy {
         }
       }
     }
-    console.log(this.graph.data.locations)
+  }
+  ngOnInit(){
+    if(this.countries && this.values){
+      this.graph.data=[{
+        type:'choropleth',
+        locationmode:'ISO-3',
+        locations: this.countries,
+        z:this.values,
+        text: this.text,
+        colorbar:{title:{text:this.colorbarTitle}},
+        colorscale:[[0,this.colorbarColorMin],[1,this.colorbarColorMax]]
+      }]
+    }
+  }
+  ngOnChanges(simpleChanges) {
+    this.graph.data=[{
+      type:'choropleth',
+      locationmode:'ISO-3',
+      locations: this.countries,
+      z:this.values,
+      text: this.text,
+      colorbar:{title:{text:this.colorbarTitle}},
+      colorscale:[[0,this.colorbarColorMin],[1,this.colorbarColorMax]]
+    }]
+      console.log(this.graph.data)
   }
   
   ngOnDestroy(): void {}  

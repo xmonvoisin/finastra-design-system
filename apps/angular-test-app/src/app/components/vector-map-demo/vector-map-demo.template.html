@@ -1,8 +1,35 @@
 <uxg-vector-map 
-[countries]= "['FRA','BEL']"
-[values]="[10,25,50,150,250]"
+[countries]= "countries"
+[values]="values"
 [width]=1000
 [height]=600
-[text]= "['Test du texte','test','et de la map']"
-[title]= "'Title'"
-></uxg-vector-map>
+[text]= "text"
+[colorbarTitle]= "colorbarTitle"
+[colorbarColorMin]='colorbarColorMin'
+[colorbarColorMax]='colorbarColorMax'
+>
+</uxg-vector-map>
+<mat-form-field>
+    <label for="countries">Countries: (selon norme ISO-3)</label>
+    <input matInput type="text" name="countries" (input)="countries$.next($event.target.value)" [value]="countries">
+</mat-form-field><br>
+<mat-form-field>
+    <label for="values">Values:</label>
+    <input matInput type="text" name="values" (input)="values$.next($event.target.value)" [value]="values">
+</mat-form-field><br>
+<mat-form-field>
+    <label for="text">Text:</label>
+    <input matInput type="text" name="text" (input)="text$.next($event.target.value)" [value]="text">
+</mat-form-field><br>
+<mat-form-field>
+    <label for="colorbarTitle">ColorBar Title:</label>
+    <input matInput type="text" name="colorbarTitle" (input)="colorbarTitle$.next($event.target.value)" [value]="colorbarTitle">
+</mat-form-field><br>
+<mat-form-field>
+    <label for="colorbarColorMin">ColorBar Minimum:</label>
+    <input matInput type="color" name="colorbarColorMin" (input)="colorbarColorMin$.next($event.target.value)" [value]="colorbarColorMin">
+</mat-form-field>
+<mat-form-field>
+    <label for="colorbarColorMax">ColorBar Maximum:</label>
+    <input matInput type="color" name="colorbarColorMax" (input)="colorbarColorMax$.next($event.target.value)" [value]="colorbarColorMax">
+</mat-form-field>
