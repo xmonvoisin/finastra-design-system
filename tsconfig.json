@@ -8,7 +8,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es5",
     "module": "esnext",
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2017", "dom"],
@@ -27,10 +27,7 @@
       "@ffdc/uxg-angular-components/vector-map": [
         "libs/angular-components/src/vector-map/src/index.ts"
       ]
-    },
-    "resolveJsonModule": true ,
-    "allowSyntheticDefaultImports":true,
-    "esModuleInterop": true  
+    }
   },
   "exclude": ["node_modules", "tmp"]
   

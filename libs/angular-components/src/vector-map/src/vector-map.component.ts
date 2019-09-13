@@ -1,30 +1,21 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import dataJson from './mapperso.json';
-import * as PlotlyJS from 'plotly.js/dist/plotly.js';
-
-
-
-
 
 @Component({
   selector: 'uxg-vector-map',
   templateUrl: './vector-map.component.html',
   styleUrls: ['./vector-map.component.scss']
 })
+
 export class VectorMapComponent implements OnInit, OnDestroy {
   @Input() countries : any;
-  @Input() describe : any;
-  @Input() values : any;
+  @Input() values : number;
   @Input() width: number;
   @Input() height : number;
   @Input() text : any;
   @Input() title:any;
 
-  data: any = dataJson;
   graph: any;
   ngOnInit() {
-    //CDN adress issue: https://cdn.plot.ly/world_110m.json
-    let myDiv= document.getElementById('myDiv');
     this.graph = {
       data: [{
         type:'choropleth',
@@ -35,15 +26,18 @@ export class VectorMapComponent implements OnInit, OnDestroy {
         autocolorscale: true
       }],
       layout:{
+        width: this.width,
+        height: this.height,
         geo:{
+          center:{lat:48.86, lon:2.35},
           projection:{
+            scale:2.3,
             type:'robinson'
           }
         }
       }
     }
-    console.log(this.graph)
-    PlotlyJS.plot(myDiv, this.graph.data, this.graph.layout, {showLink: false});
+    console.log(this.graph.data.locations)
   }
   
   ngOnDestroy(): void {}  

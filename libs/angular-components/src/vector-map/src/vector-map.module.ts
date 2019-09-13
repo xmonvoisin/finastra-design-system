@@ -5,6 +5,8 @@ import { PlotlyModule } from 'angular-plotly.js';
 import { CommonModule} from '@angular/common';
 
 
+
+
 PlotlyModule.plotlyjs = PlotlyJS;
 
 /* PlotlyViaCDNModule.plotlyVersion = '1.49.4'; // can be `latest` or any version number (i.e.: '1.40.0')
