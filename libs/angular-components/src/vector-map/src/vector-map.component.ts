@@ -22,25 +22,32 @@ export class VectorMapComponent implements OnInit, OnDestroy,OnChanges {
   get set_filter(){
     return this._filter;
   }
-  
   graph: any;
   constructor() {
     this.graph = {
       layout:{
+        clickmode:"select+event",
         geo:{
+          showocean:true,
+          oceancolor:"#dbfdff",
+          countrywidth:1,
           center:{lat:48.86, lon:2.35},
           projection:{
-            scale:2.3,
-            type:'robinson'
+            scale:2,
+            type:'robinson',
           }
         }
       }
     }
   }
+  selected(event:any): void {
+    console.log(event)
+  }
   filterDisplayData(){
     const filteredData = {}///
     this.graph.data = filteredData;
   }
+  
   ngOnInit(){
     if(this.countries && this.values){
       this.graph.data=[{
@@ -50,7 +57,7 @@ export class VectorMapComponent implements OnInit, OnDestroy,OnChanges {
         z:this.values,
         text: this.legends,
         colorbar:{title:{text:this.colorbarTitle}},
-        colorscale:[[0,this.colorbarColorMin],[1,this.colorbarColorMax]]
+        colorscale:[[0,this.colorbarColorMin],[1,this.colorbarColorMax]],
       }]
     }
   }
@@ -64,8 +71,9 @@ export class VectorMapComponent implements OnInit, OnDestroy,OnChanges {
       colorbar:{title:{text:this.colorbarTitle}},
       colorscale:[[0,this.colorbarColorMin],[1,this.colorbarColorMax]]
     }]
-      console.log(this.graph.data)
   }
+  
+  
   
   ngOnDestroy(): void {}  
 }

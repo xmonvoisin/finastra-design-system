@@ -10,22 +10,31 @@ import {
   templateUrl: './vector-map-demo.template.html'
 })
 export class VectorMapDemoComponent implements OnInit {
-  countries: string[] = ['FRA','BEL','ITA'];
+
+  countries: string[] = ['FRA','BEL','ITA','USA'];
   countries$ = new Subject();
+
   values: number[] = [10,25,50,150,250];
   values$ = new Subject();
+
   legends: string[] = ['Text 1' , 'Text 2' , 'Text 3'];
   legends$= new Subject();
+
   colorbarTitle: string = "Title";
   colorbarTitle$ = new Subject();
+
   colorbarColorMin : string = "blue";
   colorbarColorMin$ = new Subject();
+
   colorbarColorMax : string = "red ";
   colorbarColorMax$ = new Subject();
+
   checked = false;
+  
   toggleVisibility(e){
     this.checked= e.target.checked;
   }
+  
   ngOnInit() {
     this.countries$.pipe(
       debounceTime(400),
@@ -34,7 +43,7 @@ export class VectorMapDemoComponent implements OnInit {
       this.countries = country.split(",").map(term => term.toUpperCase()) 
     })
     this.values$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged(),
     ).subscribe((value: string) => {
       this.values = value.split(",").map(term => parseInt(term)) 
