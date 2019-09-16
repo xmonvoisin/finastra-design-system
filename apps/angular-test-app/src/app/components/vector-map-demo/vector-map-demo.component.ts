@@ -1,10 +1,8 @@
 import { Component , OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import {
-  map,
   debounceTime,
-  distinctUntilChanged,
-  switchMap,
+  distinctUntilChanged
 } from 'rxjs/operators';
 
 @Component({
@@ -16,15 +14,18 @@ export class VectorMapDemoComponent implements OnInit {
   countries$ = new Subject();
   values: number[] = [10,25,50,150,250];
   values$ = new Subject();
-  text: string[] = ['Text 1' , 'Text 2' , 'Text 3'];
-  text$= new Subject();
+  legends: string[] = ['Text 1' , 'Text 2' , 'Text 3'];
+  legends$= new Subject();
   colorbarTitle: string = "Title";
   colorbarTitle$ = new Subject();
   colorbarColorMin : string = "blue";
   colorbarColorMin$ = new Subject();
   colorbarColorMax : string = "red ";
   colorbarColorMax$ = new Subject();
-
+  checked = false;
+  toggleVisibility(e){
+    this.checked= e.target.checked;
+  }
   ngOnInit() {
     this.countries$.pipe(
       debounceTime(400),
@@ -38,11 +39,11 @@ export class VectorMapDemoComponent implements OnInit {
     ).subscribe((value: string) => {
       this.values = value.split(",").map(term => parseInt(term)) 
     })
-    this.text$.pipe(
+    this.legends$.pipe(
       debounceTime(400),
       distinctUntilChanged(),
     ).subscribe((texte: string) => {
-      this.text = texte.split(",").map(term => term) 
+      this.legends = texte.split(",").map(term => term) 
     })
     this.colorbarTitle$.pipe(
       debounceTime(400),

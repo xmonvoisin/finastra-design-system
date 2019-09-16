@@ -10,7 +10,8 @@ import {
   MatButtonModule,
   MatListModule,
   MatSidenavModule,
-  MatCardModule
+  MatCardModule,
+  MatButtonToggleModule,
 } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -26,7 +27,8 @@ import { AppRoutingModule } from './app-routing.module';
     MatListModule,
     MatSidenavModule,
     AppRoutingModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

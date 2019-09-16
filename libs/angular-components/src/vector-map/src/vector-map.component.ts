@@ -9,20 +9,24 @@ import { Component, OnInit, OnDestroy, Input, OnChanges } from '@angular/core';
 export class VectorMapComponent implements OnInit, OnDestroy,OnChanges {
   @Input() countries : any;
   @Input() values : number;
-  @Input() width: number;
-  @Input() height : number;
-  @Input() text : any;
+  @Input() legends : any;
   @Input() colorbarTitle:any;
   @Input() colorbarColorMin: any;
   @Input() colorbarColorMax: any;
-
-
+  private _filter: any;
+  @Input() 
+  set set_filter(filter){
+    this._filter=filter;
+    this.filterDisplayData();
+  }
+  get set_filter(){
+    return this._filter;
+  }
+  
   graph: any;
   constructor() {
     this.graph = {
       layout:{
-        width: this.width,
-        height: this.height,
         geo:{
           center:{lat:48.86, lon:2.35},
           projection:{
@@ -33,6 +37,10 @@ export class VectorMapComponent implements OnInit, OnDestroy,OnChanges {
       }
     }
   }
+  filterDisplayData(){
+    const filteredData = {}///
+    this.graph.data = filteredData;
+  }
   ngOnInit(){
     if(this.countries && this.values){
       this.graph.data=[{
@@ -40,7 +48,7 @@ export class VectorMapComponent implements OnInit, OnDestroy,OnChanges {
         locationmode:'ISO-3',
         locations: this.countries,
         z:this.values,
-        text: this.text,
+        text: this.legends,
         colorbar:{title:{text:this.colorbarTitle}},
         colorscale:[[0,this.colorbarColorMin],[1,this.colorbarColorMax]]
       }]
@@ -52,7 +60,7 @@ export class VectorMapComponent implements OnInit, OnDestroy,OnChanges {
       locationmode:'ISO-3',
       locations: this.countries,
       z:this.values,
-      text: this.text,
+      text: this.legends,
       colorbar:{title:{text:this.colorbarTitle}},
       colorscale:[[0,this.colorbarColorMin],[1,this.colorbarColorMax]]
     }]

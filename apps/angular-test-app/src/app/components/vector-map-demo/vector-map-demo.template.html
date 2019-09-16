@@ -1,16 +1,17 @@
 <uxg-vector-map 
 [countries]= "countries"
 [values]="values"
-[width]=1000
-[height]=600
-[text]= "text"
+[legends]= "legends"
 [colorbarTitle]= "colorbarTitle"
 [colorbarColorMin]='colorbarColorMin'
 [colorbarColorMax]='colorbarColorMax'
 >
 </uxg-vector-map>
+<input type="checkbox" name="theCheckbox"  (change)="toggleVisibility($event)">
+<label for="configCheck">Configuration</label><br>
+<div id="container" *ngIf="checked">
 <mat-form-field>
-    <label for="countries">Countries: (selon norme ISO-3)</label>
+    <label for="countries">Countries:(ISO-3)</label>
     <input matInput type="text" name="countries" (input)="countries$.next($event.target.value)" [value]="countries">
 </mat-form-field><br>
 <mat-form-field>
@@ -18,8 +19,8 @@
     <input matInput type="text" name="values" (input)="values$.next($event.target.value)" [value]="values">
 </mat-form-field><br>
 <mat-form-field>
-    <label for="text">Text:</label>
-    <input matInput type="text" name="text" (input)="text$.next($event.target.value)" [value]="text">
+    <label for="legends">Legends:</label>
+    <input matInput type="text" name="legends" (input)="legends$.next($event.target.value)" [value]="legends">
 </mat-form-field><br>
 <mat-form-field>
     <label for="colorbarTitle">ColorBar Title:</label>
@@ -33,3 +34,4 @@
     <label for="colorbarColorMax">ColorBar Maximum:</label>
     <input matInput type="color" name="colorbarColorMax" (input)="colorbarColorMax$.next($event.target.value)" [value]="colorbarColorMax">
 </mat-form-field>
+</div>
