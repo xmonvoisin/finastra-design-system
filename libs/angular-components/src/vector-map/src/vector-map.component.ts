@@ -13,10 +13,8 @@ export class VectorMapComponent implements  OnChanges {
   @Input() colorbarTitle:any;
   @Input() colorbarColorMin: any;
   @Input() colorbarColorMax: any;
-  @Input() lon: any;
-  @Input() lat: any;
   @Input() titleMap: string;
-
+  @Input() centerPos : number[];
 
   private _filter: any;
   @Input() 
@@ -55,7 +53,7 @@ export class VectorMapComponent implements  OnChanges {
         oceancolor:"#dbfdff",
         showland:true,
         landcolor: "#F0DC82",
-        center:{lat:this.lat, lon:this.lon},
+        center:{lat:this.centerPos[1], lon:this.centerPos[0]},
         projection:{
           scale:2,
           type:'robinson',

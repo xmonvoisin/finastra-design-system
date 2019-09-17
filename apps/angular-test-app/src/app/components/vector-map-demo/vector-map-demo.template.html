@@ -5,13 +5,12 @@
 [colorbarTitle]= "colorbarTitle"
 [colorbarColorMin]='colorbarColorMin'
 [colorbarColorMax]='colorbarColorMax'
-[lon] = 'lon'
-[lat] = 'lat'
 [titleMap] = 'titleMap'
+[centerPos] = 'centerPos'
 >
 </uxg-vector-map>
-<input type="checkbox" id="configCheck" name="configCheck" (change)="toggleVisibility($event)">
-<label for="configCheck">Configuration</label>
+<input type="checkbox" id="controlBar" name="controlBar" (change)="toggleVisibility($event)">
+<label for="controlBar">Configuration</label>
 <div id="container" *ngIf="checked">
 
 <mat-form-field>

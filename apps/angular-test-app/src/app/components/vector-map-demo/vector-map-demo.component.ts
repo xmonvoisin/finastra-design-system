@@ -8,8 +8,7 @@ import {debounceTime,distinctUntilChanged} from 'rxjs/operators';
   templateUrl: './vector-map-demo.template.html'
 })
 export class VectorMapDemoComponent implements OnInit {
-  lon: number = 2.35;
-  lat: number = 48.86;
+  centerPos: number[] = [2.35,48.86];
 
   countries: string[] = ['FRA','CHN','AUS','USA','MAR'];
   countries$ = new Subject();
@@ -89,31 +88,24 @@ export class VectorMapDemoComponent implements OnInit {
     ).subscribe((titleMap: string) => {
       this.titleMap = titleMap
     })
-    
-    
   }
-  //Configuration Center Map
+  //Configuration Center Map (the first number is longitude and the second is the latitude)
   checkPosition(e){
     console.log(e.target.value)
     if(e.target.value==='Europe'){
-      this.lon = 2.35;
-      this.lat = 48.86;
+      this.centerPos = [2.35,48.86]
     }
     if(e.target.value==='USA'){
-      this.lon = -95.71;
-      this.lat = 37.09;
+      this.centerPos = [-95.71,37.09]
     }
     if(e.target.value==='Oceanie'){
-      this.lon = 151.20;
-      this.lat = -33.87;
+      this.centerPos = [151.20,-33.87]
     }
     if(e.target.value==='Asie'){
-      this.lon = 76.45;
-      this.lat = 25.03;
+      this.centerPos = [76.45,25.03]
     }
     if(e.target.value==='Afrique'){
-      this.lon = 34.50;
-      this.lat = -8.78;
+      this.centerPos = [34.50,-8.78]
     }
   }
 }
