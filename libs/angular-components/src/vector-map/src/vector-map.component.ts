@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'uxg-vector-map',
@@ -6,7 +6,7 @@ import { Component, OnInit, OnDestroy, Input, OnChanges } from '@angular/core';
   styleUrls: ['./vector-map.component.scss']
 })
 
-export class VectorMapComponent implements  OnDestroy,OnChanges {
+export class VectorMapComponent implements  OnChanges {
   @Input() countries : any;
   @Input() values : number;
   @Input() legends : any;
@@ -15,6 +15,7 @@ export class VectorMapComponent implements  OnDestroy,OnChanges {
   @Input() colorbarColorMax: any;
   @Input() lon: any;
   @Input() lat: any;
+  @Input() titleMap: string;
 
 
   private _filter: any;
@@ -34,36 +35,6 @@ export class VectorMapComponent implements  OnDestroy,OnChanges {
     const filteredData = {}///
     this.graph.data = filteredData;
   }
-  
-  /* ngOnInit(){
-    if(this.countries && this.values){
-      this.graph={
-        data:[{
-        type:'choropleth',
-        locationmode:'ISO-3',
-        locations: this.countries,
-        z:this.values,
-        text: this.legends,
-        colorbar:{title:{text:this.colorbarTitle}},
-        colorscale:[[0,this.colorbarColorMin],[1,this.colorbarColorMax]],
-      }],
-      layout:{
-        clickmode:"select+event",
-        geo:{
-          showocean:true,
-          oceancolor:"#dbfdff",
-          showland:true,
-          landcolor: "#F0DC82",
-          center:{lat:this.lat, lon:this.lon},
-          projection:{
-            scale:2,
-            type:'robinson',
-          }
-        }
-      }
-    }
-  }
-} */
   ngOnChanges(simpleChanges) {
     this.graph={
       data:[{
@@ -77,6 +48,8 @@ export class VectorMapComponent implements  OnDestroy,OnChanges {
     }],
     layout:{
       clickmode:"select+event",
+      title:this.titleMap,
+      autosize:true,
       geo:{
         showocean:true,
         oceancolor:"#dbfdff",

@@ -11,7 +11,7 @@ import {
   MatListModule,
   MatSidenavModule,
   MatCardModule,
-  MatButtonToggleModule,
+  MatCheckboxModule
 } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -28,9 +28,21 @@ import { AppRoutingModule } from './app-routing.module';
     MatSidenavModule,
     AppRoutingModule,
     MatCardModule,
-    MatButtonToggleModule
+    MatCheckboxModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports:[CommonModule,
+    BrowserModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    BrowserAnimationsModule,
+    MatListModule,
+    MatSidenavModule,
+    AppRoutingModule,
+    MatCardModule,
+    MatCheckboxModule
+  ]
 })
 export class AppModule {}

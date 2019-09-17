@@ -2,6 +2,7 @@ import { Component , OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import {debounceTime,distinctUntilChanged} from 'rxjs/operators';
 
+
 @Component({
   selector: 'ffdc-vector-map-demo',
   templateUrl: './vector-map-demo.template.html'
@@ -19,7 +20,7 @@ export class VectorMapDemoComponent implements OnInit {
   legends: string[] = ['Text 1' , 'Text 2' , 'Text 3'];
   legends$= new Subject();
 
-  colorbarTitle: string = "Title";
+  colorbarTitle: string = "Colorbar Title";
   colorbarTitle$ = new Subject();
 
   colorbarColorMin : string = "blue";
@@ -27,6 +28,9 @@ export class VectorMapDemoComponent implements OnInit {
 
   colorbarColorMax : string = "red ";
   colorbarColorMax$ = new Subject();
+
+  titleMap: string = "TitleMap";
+  titleMap$ = new Subject();
 
   checked = false;
   
@@ -61,8 +65,8 @@ export class VectorMapDemoComponent implements OnInit {
     this.colorbarTitle$.pipe(
       debounceTime(400),
       distinctUntilChanged(),
-    ).subscribe((title: string) => {
-      this.colorbarTitle = title
+    ).subscribe((titleColorBar: string) => {
+      this.colorbarTitle = titleColorBar
     })
     //Configuration ColorBar Color Minimum
     this.colorbarColorMin$.pipe(
@@ -77,6 +81,13 @@ export class VectorMapDemoComponent implements OnInit {
       distinctUntilChanged(),
     ).subscribe((color: string) => {
       this.colorbarColorMax = color
+    })
+    //Configuration Title of Map
+    this.titleMap$.pipe(
+      debounceTime(400),
+      distinctUntilChanged(),
+    ).subscribe((titleMap: string) => {
+      this.titleMap = titleMap
     })
     
     
