@@ -1,9 +1,6 @@
 import { Component , OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import {
-  debounceTime,
-  distinctUntilChanged
-} from 'rxjs/operators';
+import {debounceTime,distinctUntilChanged} from 'rxjs/operators';
 
 @Component({
   selector: 'ffdc-vector-map-demo',
@@ -30,42 +27,48 @@ export class VectorMapDemoComponent implements OnInit {
   colorbarColorMax$ = new Subject();
 
   checked = false;
-  
+  //Checkbox Button for display configuration
   toggleVisibility(e){
     this.checked= e.target.checked;
   }
   
   ngOnInit() {
+    //Configuration Countries
     this.countries$.pipe(
       debounceTime(400),
       distinctUntilChanged(),
     ).subscribe((country: string) => {
       this.countries = country.split(",").map(term => term.toUpperCase()) 
     })
+    //Configuration Values
     this.values$.pipe(
       debounceTime(1000),
       distinctUntilChanged(),
     ).subscribe((value: string) => {
       this.values = value.split(",").map(term => parseInt(term)) 
     })
+    //Configuration Legends
     this.legends$.pipe(
       debounceTime(400),
       distinctUntilChanged(),
     ).subscribe((texte: string) => {
       this.legends = texte.split(",").map(term => term) 
     })
+    //Configiration Colorbar Title
     this.colorbarTitle$.pipe(
       debounceTime(400),
       distinctUntilChanged(),
     ).subscribe((title: string) => {
       this.colorbarTitle = title
     })
+    //Configuration ColorBar Color Minimum
     this.colorbarColorMin$.pipe(
       debounceTime(400),
       distinctUntilChanged(),
     ).subscribe((color: string) => {
       this.colorbarColorMin = color
     })
+    //Configuration ColorBar Color Maximum
     this.colorbarColorMax$.pipe(
       debounceTime(400),
       distinctUntilChanged(),

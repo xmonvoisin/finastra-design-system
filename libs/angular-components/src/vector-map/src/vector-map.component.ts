@@ -30,7 +30,8 @@ export class VectorMapComponent implements OnInit, OnDestroy,OnChanges {
         geo:{
           showocean:true,
           oceancolor:"#dbfdff",
-          countrywidth:1,
+          showland:true,
+          landcolor: "#F0DC82",
           center:{lat:48.86, lon:2.35},
           projection:{
             scale:2,
