@@ -6,13 +6,17 @@ import { Component, OnInit, OnDestroy, Input, OnChanges } from '@angular/core';
   styleUrls: ['./vector-map.component.scss']
 })
 
-export class VectorMapComponent implements OnInit, OnDestroy,OnChanges {
+export class VectorMapComponent implements  OnDestroy,OnChanges {
   @Input() countries : any;
   @Input() values : number;
   @Input() legends : any;
   @Input() colorbarTitle:any;
   @Input() colorbarColorMin: any;
   @Input() colorbarColorMax: any;
+  @Input() lon: any;
+  @Input() lat: any;
+
+
   private _filter: any;
   @Input() 
   set set_filter(filter){
@@ -23,24 +27,6 @@ export class VectorMapComponent implements OnInit, OnDestroy,OnChanges {
     return this._filter;
   }
   graph: any;
-  constructor() {
-    this.graph = {
-      layout:{
-        clickmode:"select+event",
-        geo:{
-          showocean:true,
-          oceancolor:"#dbfdff",
-          showland:true,
-          landcolor: "#F0DC82",
-          center:{lat:48.86, lon:2.35},
-          projection:{
-            scale:2,
-            type:'robinson',
-          }
-        }
-      }
-    }
-  }
   selected(event:any): void {
     console.log(event)
   }
@@ -49,9 +35,10 @@ export class VectorMapComponent implements OnInit, OnDestroy,OnChanges {
     this.graph.data = filteredData;
   }
   
-  ngOnInit(){
+  /* ngOnInit(){
     if(this.countries && this.values){
-      this.graph.data=[{
+      this.graph={
+        data:[{
         type:'choropleth',
         locationmode:'ISO-3',
         locations: this.countries,
@@ -59,11 +46,27 @@ export class VectorMapComponent implements OnInit, OnDestroy,OnChanges {
         text: this.legends,
         colorbar:{title:{text:this.colorbarTitle}},
         colorscale:[[0,this.colorbarColorMin],[1,this.colorbarColorMax]],
-      }]
+      }],
+      layout:{
+        clickmode:"select+event",
+        geo:{
+          showocean:true,
+          oceancolor:"#dbfdff",
+          showland:true,
+          landcolor: "#F0DC82",
+          center:{lat:this.lat, lon:this.lon},
+          projection:{
+            scale:2,
+            type:'robinson',
+          }
+        }
+      }
     }
   }
+} */
   ngOnChanges(simpleChanges) {
-    this.graph.data=[{
+    this.graph={
+      data:[{
       type:'choropleth',
       locationmode:'ISO-3',
       locations: this.countries,
@@ -71,9 +74,23 @@ export class VectorMapComponent implements OnInit, OnDestroy,OnChanges {
       text: this.legends,
       colorbar:{title:{text:this.colorbarTitle}},
       colorscale:[[0,this.colorbarColorMin],[1,this.colorbarColorMax]]
-    }]
+    }],
+    layout:{
+      clickmode:"select+event",
+      geo:{
+        showocean:true,
+        oceancolor:"#dbfdff",
+        showland:true,
+        landcolor: "#F0DC82",
+        center:{lat:this.lat, lon:this.lon},
+        projection:{
+          scale:2,
+          type:'robinson',
+        }
+      }
+    }
   }
-  
+}
   
   
   ngOnDestroy(): void {}  

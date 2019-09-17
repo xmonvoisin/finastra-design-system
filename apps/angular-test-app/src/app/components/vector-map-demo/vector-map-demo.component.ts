@@ -7,8 +7,10 @@ import {debounceTime,distinctUntilChanged} from 'rxjs/operators';
   templateUrl: './vector-map-demo.template.html'
 })
 export class VectorMapDemoComponent implements OnInit {
+  lon: number = 2.35;
+  lat: number = 48.86;
 
-  countries: string[] = ['FRA','BEL','ITA','USA'];
+  countries: string[] = ['FRA','CHN','AUS','USA','MAR'];
   countries$ = new Subject();
 
   values: number[] = [10,25,50,150,250];
@@ -27,6 +29,7 @@ export class VectorMapDemoComponent implements OnInit {
   colorbarColorMax$ = new Subject();
 
   checked = false;
+  
   //Checkbox Button for display configuration
   toggleVisibility(e){
     this.checked= e.target.checked;
@@ -75,6 +78,32 @@ export class VectorMapDemoComponent implements OnInit {
     ).subscribe((color: string) => {
       this.colorbarColorMax = color
     })
+    
+    
+  }
+  //Configuration Center Map
+  checkPosition(e){
+    console.log(e.target.value)
+    if(e.target.value==='Europe'){
+      this.lon = 2.35;
+      this.lat = 48.86;
+    }
+    if(e.target.value==='USA'){
+      this.lon = -95.71;
+      this.lat = 37.09;
+    }
+    if(e.target.value==='Oceanie'){
+      this.lon = 151.20;
+      this.lat = -33.87;
+    }
+    if(e.target.value==='Asie'){
+      this.lon = 76.45;
+      this.lat = 25.03;
+    }
+    if(e.target.value==='Afrique'){
+      this.lon = 34.50;
+      this.lat = -8.78;
+    }
   }
 }
 
