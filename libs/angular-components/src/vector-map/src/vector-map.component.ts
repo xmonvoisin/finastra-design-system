@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'uxg-vector-map',
@@ -7,14 +7,17 @@ import { Component, Input, OnChanges } from '@angular/core';
 })
 
 export class VectorMapComponent implements  OnChanges {
+  @Input() data : any [] ;
   @Input() countries : any;
   @Input() values : number;
+  
   @Input() legends : any;
   @Input() colorbarTitle:any;
   @Input() colorbarColorMin: any;
   @Input() colorbarColorMax: any;
   @Input() titleMap: string;
   @Input() centerPos : number[];
+  @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
   private _filter: any;
   @Input() 
@@ -26,12 +29,17 @@ export class VectorMapComponent implements  OnChanges {
     return this._filter;
   }
   graph: any;
-  selected(event:any): void {
-    console.log(event)
-  }
   filterDisplayData(){
     const filteredData = {}///
     this.graph.data = filteredData;
+  }
+  
+  test(e){
+    const clickCountry= e.data[0].locations[0];
+    const countryData = this.data[0].country.filter(x => x === "FRA");
+    
+    this.onClick.emit({ data: countryData}); 
+    console.log(clickCountry) 
   }
   ngOnChanges(simpleChanges) {
     this.graph={
