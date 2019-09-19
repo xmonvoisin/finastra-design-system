@@ -99,7 +99,6 @@ export class VectorMapDemoComponent implements OnInit {
   }
   //Configuration Center Map (the first number is longitude and the second is the latitude)
   checkPosition(e){
-    console.log(e.target.value)
     if(e.target.value==='Europe'){
       this.centerPos = [2.35,48.86]
     }
@@ -117,7 +116,7 @@ export class VectorMapDemoComponent implements OnInit {
     }
   }
   onCountryClick($event){
-    console.log()
+    console.log($event)
   }
 }
 

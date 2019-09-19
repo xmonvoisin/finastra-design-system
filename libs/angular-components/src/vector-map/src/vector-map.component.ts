@@ -34,13 +34,20 @@ export class VectorMapComponent implements  OnChanges {
     this.graph.data = filteredData;
   }
   
-  test(e){
-    const clickCountry= e.data[0].locations[0];
-    const countryData = this.data[0].country.filter(x => x === "FRA");
+  emitterData(e){
     
-    this.onClick.emit({ data: countryData}); 
-    console.log(clickCountry) 
-  }
+    const clickCountry= e.data[0].selectedpoints;
+    /* const countryData = this.data[0].country.filter(x => x === "FRA"); */
+    const countryData = this.data[0].country[clickCountry] 
+    const valueData= this.data[0].value[clickCountry]
+    this.onClick.emit({ data:[{
+      country:countryData,
+      value: valueData  
+      }]
+    });  
+    
+    console.log(countryData, valueData) 
+}
   ngOnChanges(simpleChanges) {
     this.graph={
       data:[{
