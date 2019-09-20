@@ -14,6 +14,8 @@ import { GlobalSearchDemoComponent } from './components/global-search-demo/globa
 import { routes } from './routes';
 import { VectorMapDemoComponent } from './components/vector-map-demo/vector-map-demo.component';
 import { VectorMapModule } from '@ffdc/uxg-angular-components/vector-map';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   imports: [
@@ -24,7 +26,9 @@ import { VectorMapModule } from '@ffdc/uxg-angular-components/vector-map';
     MatChipsModule,
     MatFormFieldModule,
     MatInputModule,
-    VectorMapModule
+    VectorMapModule,
+    MatCheckboxModule,
+    MatButtonToggleModule
   ],
   declarations: [
     HomeComponent,

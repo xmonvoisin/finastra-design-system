@@ -1,62 +1,108 @@
-<uxg-vector-map 
-[countries]= "countries"
-[values]="values"
-[data] = "data"
-[legends]= "legends"
-[colorbarTitle]= "colorbarTitle"
-[colorbarColorMin]='colorbarColorMin'
-[colorbarColorMax]='colorbarColorMax'
-[titleMap] = 'titleMap'
-[centerPos] = 'centerPos'
-(onClick) = 'onCountryClick($event)'
+<uxg-vector-map
+  [data]="demoData"
+  [colorbarTitle]="colorbarTitle"
+  [colorbarColorMin]="colorbarColorMin"
+  [colorbarColorMax]="colorbarColorMax"
+  [titleMap]="titleMap"
+  [centerPos]="centerPos"
+  (onClick)="onCountryClick($event)"
 >
 </uxg-vector-map>
-<input type="checkbox" id="controlBar" name="controlBar" (change)="toggleVisibility($event)">
-<label for="controlBar">Configuration</label>
+
+<mat-button-toggle
+  id="controlBar"
+  name="controlBar"
+  value="!checked"
+  (click)="toggleVisibility(checked)"
+  >Configuration</mat-button-toggle
+>
 <div id="container" *ngIf="checked">
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      id="countries"
+      name="countries"
+      [value]="countries"
+      (keyup.enter)="countries$.next($event.target.value)"
+      placeholder="countries (ISO-3):"
+    />
+  </mat-form-field>
+  <br />
 
-<mat-form-field>
-    <label for="countries">Countries:(ISO-3)</label>
-    <input matInput type="text" id="countries" name="countries" (input)="countries$.next($event.target.value)" [value]="countries">
-</mat-form-field> <br>
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      id="values"
+      name="values"
+      [value]="values"
+      (keyup.enter)="values$.next($event.target.value)"
+      placeholder="Values: "
+    /> </mat-form-field
+  ><br />
 
-<mat-form-field>
-    <label for="data.values">Values:</label>
-    <input matInput type="text" id="values" name="values" (input)="values$.next($event.target.value)" [value]="values">
-</mat-form-field><br>
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      id="titleMap"
+      name="titleMap"
+      placeholder="Title of Map"
+      (input)="titleMap$.next($event.target.value)"
+      [value]="titleMap"
+    /> </mat-form-field
+  ><br />
 
-<mat-form-field>
-        <label for="titleMap">Title of Map:</label>
-        <input matInput type="text" id="titleMap" name="titleMap" (input)="titleMap$.next($event.target.value)" [value]="titleMap">
-    </mat-form-field><br>
-<mat-form-field>
-    <label for="legends">Legends:</label>
-    <input matInput type="text" id="legends" name="legends" (input)="legends$.next($event.target.value)" [value]="legends">
-</mat-form-field><br>
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      placeholder=" ColorBar Title"
+      id="colorbarTitle"
+      name="colorbarTitle"
+      (input)="colorbarTitle$.next($event.target.value)"
+      [value]="colorbarTitle"
+    /> </mat-form-field
+  ><br />
 
-<mat-form-field>
-    <label for="colorbarTitle">ColorBar Title:</label>
-    <input matInput type="text" id="colorbarTitle" name="colorbarTitle" (input)="colorbarTitle$.next($event.target.value)" [value]="colorbarTitle">
-</mat-form-field><br>
-
-<mat-form-field>
+  <mat-form-field>
     <label for="colorbarColorMin">ColorBar Minimum:</label>
-    <input matInput type="color" id="colorbarColorMin" name="colorbarColorMin" (input)="colorbarColorMin$.next($event.target.value)" [value]="colorbarColorMin">
-</mat-form-field>
+    <input
+      matInput
+      type="color"
+      id="colorbarColorMin"
+      name="colorbarColorMin"
+      (input)="colorbarColorMin$.next($event.target.value)"
+      [value]="colorbarColorMin"
+    />
+  </mat-form-field>
 
-<mat-form-field>
+  <mat-form-field>
     <label for="colorbarColorMax">ColorBar Maximum:</label>
-    <input matInput type="color" id="colorbarColorMax" name="colorbarColorMax" (input)="colorbarColorMax$.next($event.target.value)" [value]="colorbarColorMax">
-</mat-form-field><br>
+    <input
+      matInput
+      type="color"
+      id="colorbarColorMax"
+      name="colorbarColorMax"
+      (input)="colorbarColorMax$.next($event.target.value)"
+      [value]="colorbarColorMax"
+    /> </mat-form-field
+  ><br />
 
-<mat-form-field>
+  <mat-form-field>
     <mat-label>Map Center</mat-label>
-        <select matNativeControl name="centerMap" (change)="checkPosition($event)" required>
-            <option value="Europe" >Europe</option>
-            <option value="USA" >USA</option>
-            <option value="Oceanie">Oceania</option>
-            <option value="Asie">Asia</option>
-            <option value="Afrique">Africa</option>
-        </select>
-</mat-form-field>
+    <select
+      matNativeControl
+      name="centerMap"
+      (change)="checkPosition($event)"
+      required
+    >
+      <option value="Europe">Europe</option>
+      <option value="USA">USA</option>
+      <option value="Oceanie">Oceania</option>
+      <option value="Asie">Asia</option>
+      <option value="Afrique">Africa</option>
+    </select>
+  </mat-form-field>
 </div>
