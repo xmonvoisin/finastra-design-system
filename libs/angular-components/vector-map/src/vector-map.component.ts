@@ -30,9 +30,49 @@ export class VectorMapComponent implements OnInit, OnChanges {
   @Input() titleMap: string;
   @Input() centerPos: number[]; 
   @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
+
+  private _data= [
+    {
+      country: 'FRA',
+      value: 10,
+      'Market Value': 666,
+      currency: 'EUR'
+    },
+    {
+      country: 'CHN',
+      value: 25
+    },
+    {
+      country: 'PRT',
+      value: 150
+    },
+    {
+      country: 'USA',
+      value: 300,
+      currency: 'USA',
+      text:'lorem ipsum'
+    }
+  ];
+  private _displayField = ["text","currency"];
+  private _colorbarTitle="ColorBar Title";
+  private _colorbarColorMin="#9E75FF";
+  private _colorbarColorMax="#302463";
+  private _clickModeStatus = "select+event";
+  private _titleMap="Title Map";
+  private _width=1400;
+  private _height=600;
+  private _landColor = 'rgb(210, 210, 210)';
+  private _countryColor='#a8a8a8';
+  private _showlandCheck = true;
+  private _showcountriesCheck = true;
+  private _showborderMap = false;
+  private _showcoastLines = true;
+  private _centerPos = [2.35 , 48.86];
+
+
   
   private _filter: any;
-  @Input()
+ /*  @Input()
   set set_filter(filter) {
     this._filter = filter;
     this.filterDisplayData();
@@ -40,11 +80,10 @@ export class VectorMapComponent implements OnInit, OnChanges {
   get set_filter() {
     return this._filter;
   }
-  graph: any;
   filterDisplayData() {
     const filteredData = {};
     this.graph.data = filteredData;
-  }
+  } */
 
   emitterData(e) {
     const clickCountryIndexs = e.data[0].selectedpoints || [];
@@ -55,45 +94,97 @@ export class VectorMapComponent implements OnInit, OnChanges {
     this.onClick.emit({
       data: selectData
     });
-
-    console.log(selectData);
   }
-  ngOnInit(): void {}
+  graph: any;
+
+  ngOnInit(): void {
+    console.log(this._centerPos)
+  }
   ngOnChanges(simpleChanges) {
-    console.log(this.displayField);
     this.graph = {
       data: [
         {
           type: 'choropleth',
           locationmode: 'ISO-3',
-          locations: this.data.map(dataItem => dataItem.country), //this.countries,
-          z: this.data.map(dataItem => dataItem.value), //this.values
+          locations: this.data.map(dataItem => dataItem.country) ? 
+            this.data.map(dataItem => dataItem.country) : 
+            this._data.map(dataItem => dataItem.country) , 
+          z: this.data.map(dataItem => dataItem.value) ?
+            this.data.map(dataItem => dataItem.value):
+            this._data.map(dataItem => dataItem.value), 
           text: this.data.map(dataItem => {
             let text = '';
             this.displayField.forEach( field => {
               text += "<br>" + dataItem[field] ;
             })  
             return text 
+          })?
+          this.data.map(dataItem => {
+            let text = '';
+            this.displayField.forEach( field => {
+              text += "<br>" + dataItem[field] ;
+            })  
+            return text 
+          }):
+          this._data.map(dataItem => {
+            let text = '';
+            this._displayField.forEach( field => {
+              text += "<br>" + dataItem[field] ;
+            })  
+            return text 
           }), 
-          colorbar: { title: { text: this.colorbarTitle ? this.colorbarTitle:"ColorBar Title" } },
-          colorscale: [[0, this.colorbarColorMin ? this.colorbarColorMin:"#694ED6"], [1, this.colorbarColorMax ? this.colorbarColorMax:"#E42D1A"]]
+          colorbar: { title: { text: this.colorbarTitle ?
+            this.colorbarTitle: 
+            this._colorbarTitle } },
+          colorscale: [[0, this.colorbarColorMin ? 
+            this.colorbarColorMin:
+            this._colorbarColorMin], 
+            [1, this.colorbarColorMax ? 
+            this.colorbarColorMax:
+            this._colorbarColorMax]]
         }
       ],
       layout: {
-        clickmode: this.clickModeStatus ? this.clickModeStatus : "select+event",
-        title: this.titleMap ? this.titleMap:"Title Map",
+        clickmode: this.clickModeStatus ? 
+          this.clickModeStatus : 
+          this._clickModeStatus,
+        title: this.titleMap ? 
+          this.titleMap: 
+          this._titleMap,
         autosize: false,
-        width:  this.width ? this.width:1400,
-        height: this.height ? this.height:600,
+        width:  this.width ?
+          this.width: 
+          this._width,
+        height: this.height ?
+          this.height:
+          this._height,
         geo: {
-          bgcolor:"#D6EFF5",
-          showland: this.showlandCheck ,
-          landcolor: this.landColor ? this.landColor : '#FBEBC7',
-          showcountries: this.showcountriesCheck ,
-          countrycolor: this.countryColor? this.countryColor:'#a8a8a8',
-          showframe: this.showborderMap ,
-          showcoastlines: this.showcoastLines,
-          center: { lat: this.centerPos[1], lon: this.centerPos[0] },
+          bgcolor:"rgb(255, 255, 255)",
+          showland: this.showlandCheck !== undefined ? 
+            this.showlandCheck : 
+            this._showlandCheck ,
+          landcolor: this.landColor ? 
+            this.landColor : 
+            this._landColor,
+          showcountries: this.showcountriesCheck !== undefined ? 
+            this.showcountriesCheck : 
+            this._showcountriesCheck ,
+          countrycolor: this.countryColor? 
+            this.countryColor:
+            this._countryColor,
+          showframe: this.showborderMap !== undefined ? 
+            this.showborderMap : 
+            this._showborderMap ,
+          showcoastlines: this.showcoastLines !== undefined ? 
+            this.showcoastLines : 
+            this._showcoastLines,
+          center: { lat: this.centerPos ?
+              this.centerPos[1] :
+              this._centerPos[1], 
+            lon: this.centerPos ? 
+              this.centerPos[0] :
+              this._centerPos[0]  
+          },
           projection: {
             scale: 3,
             type: 'mercator'

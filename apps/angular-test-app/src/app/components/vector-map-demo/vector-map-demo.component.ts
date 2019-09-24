@@ -29,7 +29,7 @@ export class VectorMapDemoComponent implements OnInit {
       text:'lorem ipsum'
     }
   ];
-  displayField : string[] = ["text","currency","value","country"];
+  displayField : string[] = ["text","currency"];
   centerPos: number[] = [2.35, 48.86];
 
   countries: string[] = this.demoData.map(item => item.country);
@@ -41,10 +41,10 @@ export class VectorMapDemoComponent implements OnInit {
   colorbarTitle: string = 'Colorbar Title';
   colorbarTitle$ = new Subject();
 
-  colorbarColorMin: string = '#694ED6';
+  colorbarColorMin: string = '#9E75FF';
   colorbarColorMin$ = new Subject();
 
-  colorbarColorMax: string = '#E42D1A';
+  colorbarColorMax: string = '#302463';
   colorbarColorMax$ = new Subject();
 
   titleMap: string = 'TitleMap';
@@ -56,7 +56,7 @@ export class VectorMapDemoComponent implements OnInit {
   height: number = 600;
   height$ = new Subject();
 
-  landColor: string = '#FBEBC7';
+  landColor: string = 'rgb(210, 210, 210)';
   landColor$ = new Subject()
 
   countryColor : String = '#a8a8a8';
@@ -82,6 +82,7 @@ export class VectorMapDemoComponent implements OnInit {
       this.clickModeStatus = "select+event"
     }
   }
+  
   ngOnInit() {
 
     //Configuration Land Color

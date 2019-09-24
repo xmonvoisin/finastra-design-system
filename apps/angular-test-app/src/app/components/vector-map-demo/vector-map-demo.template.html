@@ -1,11 +1,12 @@
 <uxg-vector-map
   [data]="demoData"
   [displayField]="displayField"
+  [centerPos]="centerPos"
+
   [colorbarTitle]="colorbarTitle"
   [colorbarColorMin]="colorbarColorMin"
   [colorbarColorMax]="colorbarColorMax"
   [titleMap]="titleMap"
-  [centerPos]="centerPos"
   [width]="width"
   [height]="height"
   [landColor]="landColor"
@@ -19,7 +20,22 @@
   (onClick)="onCountryClick($event)"
 >
 </uxg-vector-map>
-
+<!-- [data]="demoData"
+  [displayField]="displayField"
+  [colorbarTitle]="colorbarTitle"
+  [colorbarColorMin]="colorbarColorMin"
+  [colorbarColorMax]="colorbarColorMax"
+  [titleMap]="titleMap"
+  [centerPos]="centerPos"
+  [width]="width"
+  [height]="height"
+  [landColor]="landColor"
+  [countryColor]="countryColor"
+  [clickModeStatus]="clickModeStatus"
+  [showcountriesCheck]="showcountriesCheck"
+  [showlandCheck]="showlandCheck"
+  [showborderMap]="showborderMap"
+  [showcoastLines]="showcoastLines" -->
 <mat-button-toggle
   id="controlBar"
   name="controlBar"
