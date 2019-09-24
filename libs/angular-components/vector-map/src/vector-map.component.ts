@@ -105,6 +105,7 @@ export class VectorMapComponent implements OnInit, OnChanges {
         }
       ],
       layout: {
+        showlegend:false,
         clickmode: this.clickModeStatus ? 
           this.clickModeStatus : 
           this._clickModeStatus,
@@ -150,6 +151,9 @@ export class VectorMapComponent implements OnInit, OnChanges {
             type: 'mercator'
           }
         }
+      },
+      config:{
+        displaylogo: false
       }
     };
   }
