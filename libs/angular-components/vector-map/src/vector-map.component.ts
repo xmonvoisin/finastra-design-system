@@ -31,29 +31,7 @@ export class VectorMapComponent implements OnInit, OnChanges {
   @Input() centerPos: number[]; 
   @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
-  private _data= [
-    {
-      country: 'FRA',
-      value: 10,
-      'Market Value': 666,
-      currency: 'EUR'
-    },
-    {
-      country: 'CHN',
-      value: 25
-    },
-    {
-      country: 'PRT',
-      value: 150
-    },
-    {
-      country: 'USA',
-      value: 300,
-      currency: 'USA',
-      text:'lorem ipsum'
-    }
-  ];
-  private _displayField = ["text","currency"];
+  
   private _colorbarTitle="ColorBar Title";
   private _colorbarColorMin="#9E75FF";
   private _colorbarColorMax="#302463";
@@ -106,29 +84,11 @@ export class VectorMapComponent implements OnInit, OnChanges {
         {
           type: 'choropleth',
           locationmode: 'ISO-3',
-          locations: this.data.map(dataItem => dataItem.country) ? 
-            this.data.map(dataItem => dataItem.country) : 
-            this._data.map(dataItem => dataItem.country) , 
-          z: this.data.map(dataItem => dataItem.value) ?
-            this.data.map(dataItem => dataItem.value):
-            this._data.map(dataItem => dataItem.value), 
+          locations: this.data.map(dataItem => dataItem.country), 
+          z: this.data.map(dataItem => dataItem.value), 
           text: this.data.map(dataItem => {
             let text = '';
             this.displayField.forEach( field => {
-              text += "<br>" + dataItem[field] ;
-            })  
-            return text 
-          })?
-          this.data.map(dataItem => {
-            let text = '';
-            this.displayField.forEach( field => {
-              text += "<br>" + dataItem[field] ;
-            })  
-            return text 
-          }):
-          this._data.map(dataItem => {
-            let text = '';
-            this._displayField.forEach( field => {
               text += "<br>" + dataItem[field] ;
             })  
             return text 
