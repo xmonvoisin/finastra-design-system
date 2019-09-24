@@ -14,14 +14,23 @@ import {
 })
 export class VectorMapComponent implements OnInit, OnChanges {
   @Input() data: any[];
-
+  @Input() displayField: string[];
+  @Input() width :number;
+  @Input() height : number;
+  @Input() showcountriesCheck : boolean;
+  @Input() showlandCheck : boolean;
+  @Input() showborderMap : boolean;
+  @Input() showcoastLines:boolean;
+  @Input() landColor : string;
+  @Input() countryColor : string;
+  @Input() clickModeStatus : string;
   @Input() colorbarTitle: any;
   @Input() colorbarColorMin: any;
   @Input() colorbarColorMax: any;
   @Input() titleMap: string;
-  @Input() centerPos: number[];
+  @Input() centerPos: number[]; 
   @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
-
+  
   private _filter: any;
   @Input()
   set set_filter(filter) {
@@ -51,6 +60,7 @@ export class VectorMapComponent implements OnInit, OnChanges {
   }
   ngOnInit(): void {}
   ngOnChanges(simpleChanges) {
+    console.log(this.displayField);
     this.graph = {
       data: [
         {
@@ -60,28 +70,29 @@ export class VectorMapComponent implements OnInit, OnChanges {
           z: this.data.map(dataItem => dataItem.value), //this.values
           text: this.data.map(dataItem => {
             let text = '';
-            Object.keys(dataItem).forEach(item => {
-              text += item + ':' + dataItem[item] + '<br>';
-            });
-            return text;
-          }), //this.legends,
-          colorbar: { title: { text: this.colorbarTitle } },
-          colorscale: [[0, this.colorbarColorMin], [1, this.colorbarColorMax]]
+            this.displayField.forEach( field => {
+              text += "<br>" + dataItem[field] ;
+            })  
+            return text 
+          }), 
+          colorbar: { title: { text: this.colorbarTitle ? this.colorbarTitle:"ColorBar Title" } },
+          colorscale: [[0, this.colorbarColorMin ? this.colorbarColorMin:"#694ED6"], [1, this.colorbarColorMax ? this.colorbarColorMax:"#E42D1A"]]
         }
       ],
       layout: {
-        clickmode: 'select+event',
-        title: this.titleMap,
-        autosize: true,
-        width: 1200,
-        height: 600,
+        clickmode: this.clickModeStatus ? this.clickModeStatus : "select+event",
+        title: this.titleMap ? this.titleMap:"Title Map",
+        autosize: false,
+        width:  this.width ? this.width:1400,
+        height: this.height ? this.height:600,
         geo: {
-          showland: true,
-          landcolor: '#d4d4d4',
-          showcountries: true,
-          countrycolor: '#a8a8a8',
-          showframe: false,
-          showcoastlines: false,
+          bgcolor:"#D6EFF5",
+          showland: this.showlandCheck ,
+          landcolor: this.landColor ? this.landColor : '#FBEBC7',
+          showcountries: this.showcountriesCheck ,
+          countrycolor: this.countryColor? this.countryColor:'#a8a8a8',
+          showframe: this.showborderMap ,
+          showcoastlines: this.showcoastLines,
           center: { lat: this.centerPos[1], lon: this.centerPos[0] },
           projection: {
             scale: 3,

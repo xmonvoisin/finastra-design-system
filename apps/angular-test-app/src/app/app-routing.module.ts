@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatCardModule, MatChipsModule, MatButtonModule, MatIconModule } from '@angular/material';
+import { MatCardModule, MatChipsModule, MatButtonModule, MatIconModule,MatCheckboxModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { ComponentsModule } from '@ffdc/uxg-angular-components';
 import { GlobalSearchDemoComponent } from './components/global-search-demo/global-search-demo.component';

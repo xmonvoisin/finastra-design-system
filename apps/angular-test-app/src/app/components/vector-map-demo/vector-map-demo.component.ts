@@ -12,7 +12,7 @@ export class VectorMapDemoComponent implements OnInit {
       country: 'FRA',
       value: 10,
       'Market Value': 666,
-      courrency: 'EUR'
+      currency: 'EUR'
     },
     {
       country: 'CHN',
@@ -21,8 +21,15 @@ export class VectorMapDemoComponent implements OnInit {
     {
       country: 'PRT',
       value: 150
+    },
+    {
+      country: 'USA',
+      value: 300,
+      currency: 'USA',
+      text:'lorem ipsum'
     }
   ];
+  displayField : string[] = ["text","currency","value","country"];
   centerPos: number[] = [2.35, 48.86];
 
   countries: string[] = this.demoData.map(item => item.country);
@@ -34,22 +41,67 @@ export class VectorMapDemoComponent implements OnInit {
   colorbarTitle: string = 'Colorbar Title';
   colorbarTitle$ = new Subject();
 
-  colorbarColorMin: string = 'blue';
+  colorbarColorMin: string = '#694ED6';
   colorbarColorMin$ = new Subject();
 
-  colorbarColorMax: string = 'red ';
+  colorbarColorMax: string = '#E42D1A';
   colorbarColorMax$ = new Subject();
 
   titleMap: string = 'TitleMap';
   titleMap$ = new Subject();
 
+  width: number = 1400;
+  width$= new Subject();
+
+  height: number = 600;
+  height$ = new Subject();
+
+  landColor: string = '#FBEBC7';
+  landColor$ = new Subject()
+
+  countryColor : String = '#a8a8a8';
+  countryColor$ = new Subject();
+
+  clickModeStatus : String = "select+event";
+
   checked = false;
+  showcountriesCheck = true;
+  showlandCheck = true;
+  showborderMap = false;
+  showcoastLines = true;
+  clickMode = true;
 
   //Checkbox Button for display configuration
   toggleVisibility(value) {
     this.checked = !value;
   }
+  clickStatus(){
+    if(this.clickMode === true){
+      this.clickModeStatus = "event"
+    }else{
+      this.clickModeStatus = "select+event"
+    }
+  }
   ngOnInit() {
+
+    //Configuration Land Color
+    this.landColor$
+      .pipe(
+        debounceTime(400),
+        distinctUntilChanged()
+      )
+      .subscribe((colorLand : string)=>{
+        this.landColor = colorLand;
+      })
+    //Configuration Country Boundaries Color
+    this.countryColor$
+    .pipe(
+      debounceTime(400),
+      distinctUntilChanged()
+    )
+    .subscribe((countryColors : string)=>{
+      this.countryColor = countryColors;
+    })
     //Configuration Countries
     this.countries$
       .pipe(
@@ -74,6 +126,24 @@ export class VectorMapDemoComponent implements OnInit {
         });
         this.resetData();
       });
+    //Configuration Width of Map
+    this.width$
+    .pipe(
+      debounceTime(400),
+      distinctUntilChanged()
+      )
+      .subscribe((value:number)=>{
+        this.width=value;
+      })
+      //Configuration Height of Map
+    this.height$
+    .pipe(
+      debounceTime(400),
+      distinctUntilChanged()
+      )
+      .subscribe((value:number)=>{
+        this.height=value;
+      })
     //Configuration Values
     this.values$
       .pipe(
