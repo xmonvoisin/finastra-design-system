@@ -132,7 +132,7 @@ export class VectorMapDemoComponent implements OnInit  {
             });
           }
         });
-          this.resetData();
+          /* this.resetData(); */
       });
     //Configuration Width of Map
     this.width$
@@ -165,7 +165,7 @@ export class VectorMapDemoComponent implements OnInit  {
           this.demoData[i].value = valuesTemp[i];
         }
 
-        this.resetData();
+        /* this.resetData(); */
       });
 
     //Configiration Colorbar Title

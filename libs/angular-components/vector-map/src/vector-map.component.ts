@@ -29,7 +29,7 @@ export class VectorMapComponent implements OnInit, OnChanges {
   @Input() colorbarColorMax: any;
   @Input() titleMap: string;
   @Input() centerPos: number[]; 
-  @Input() countryNameType: 'country names' | 'ISO-3' | "USA-states" ;
+  @Input() countryNameType: 'country names' | 'ISO-3' | 'USA-states' ;
   @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
   
