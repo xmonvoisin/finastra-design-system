@@ -29,6 +29,7 @@ export class VectorMapComponent implements OnInit, OnChanges {
   @Input() colorbarColorMax: any;
   @Input() titleMap: string;
   @Input() centerPos: number[]; 
+  @Input() countryNameType: 'country names' | 'ISO-3' | "USA-states" ;
   @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
   
@@ -46,6 +47,7 @@ export class VectorMapComponent implements OnInit, OnChanges {
   private _showborderMap = false;
   private _showcoastLines = true;
   private _centerPos = [2.35 , 48.86];
+  private _countryNameType = 'country names';
 
 
   
@@ -75,15 +77,13 @@ export class VectorMapComponent implements OnInit, OnChanges {
   }
   graph: any;
 
-  ngOnInit(): void {
-    console.log(this._centerPos)
-  }
+  ngOnInit(): void {}
   ngOnChanges(simpleChanges) {
     this.graph = {
       data: [
         {
           type: 'choropleth',
-          locationmode: 'ISO-3',
+          locationmode: this.countryNameType !== undefined? this.countryNameType : this._countryNameType,
           locations: this.data.map(dataItem => dataItem.country), 
           z: this.data.map(dataItem => dataItem.value), 
           text: this.data.map(dataItem => {
@@ -147,7 +147,7 @@ export class VectorMapComponent implements OnInit, OnChanges {
               this._centerPos[0]  
           },
           projection: {
-            scale: 3,
+            scale: 2,
             type: 'mercator'
           }
         }

@@ -6,10 +6,10 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
   selector: 'ffdc-vector-map-demo',
   templateUrl: './vector-map-demo.template.html'
 })
-export class VectorMapDemoComponent implements OnInit {
+export class VectorMapDemoComponent implements OnInit  {
   demoData: any[] = [
     {
-      country: 'FRA',
+      country: 'France',
       value: 10,
       'Market Value': 666,
       currency: 'EUR'
@@ -19,7 +19,7 @@ export class VectorMapDemoComponent implements OnInit {
       value: 25
     },
     {
-      country: 'PRT',
+      country: 'Portugal',
       value: 150
     },
     {
@@ -70,9 +70,14 @@ export class VectorMapDemoComponent implements OnInit {
   showborderMap = false;
   showcoastLines = true;
   clickMode = true;
-
+  countryNameType: string = "country names";
+  selectCountryNameType : any ;
+  
+  selectCountryType(e : any){
+    this.countryNameType = e.value
+  }
   //Checkbox Button for display configuration
-  toggleVisibility(value) {
+  toggleVisibility(value,target) {
     this.checked = !value;
   }
   clickStatus(){
@@ -83,8 +88,10 @@ export class VectorMapDemoComponent implements OnInit {
     }
   }
   
+  
+  
   ngOnInit() {
-
+    
     //Configuration Land Color
     this.landColor$
       .pipe(
@@ -112,7 +119,7 @@ export class VectorMapDemoComponent implements OnInit {
       .subscribe((countries: any) => {
         const countriesTemp = countries
           .split(',')
-          .map(term => term.toUpperCase());
+          .map(term => term);
 
         countriesTemp.forEach(country => {
           const countryIndexInData = this.demoData.findIndex(
@@ -125,7 +132,7 @@ export class VectorMapDemoComponent implements OnInit {
             });
           }
         });
-        this.resetData();
+          this.resetData();
       });
     //Configuration Width of Map
     this.width$
