@@ -9,9 +9,13 @@ import {
   MatIconModule,
   MatToolbarModule,
   MatListModule,
-  MatButtonModule
+  MatButtonModule,
+  MatTableModule,
+  MatExpansionModule,
+  MatBadgeModule
 } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   exports: [
@@ -26,7 +30,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     MatIconModule,
     MatToolbarModule,
     MatListModule,
-    MatButtonModule
+    MatButtonModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatExpansionModule,
+    MatListModule,
+    MatBadgeModule
+    
   ]
 })
 export class MaterialModule {}

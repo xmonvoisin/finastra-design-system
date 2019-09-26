@@ -13,6 +13,7 @@ import {
 import { CdkTableModule } from '@angular/cdk/table';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TableComponent } from './table.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [TableComponent],
@@ -27,7 +28,8 @@ import { TableComponent } from './table.component';
     MatFormFieldModule,
     MatProgressSpinnerModule,
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    BrowserAnimationsModule
   ],
   exports: [TableComponent]
 })

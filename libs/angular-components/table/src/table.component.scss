@@ -3,6 +3,19 @@ $uxg-table-max-height: 528px; // display maximum 10 rows
 
 uxg-table {
     flex: 1;
+    .mat-table{
+        tbody{
+            tr{
+                &.example-detail-row {
+                    display: block;
+    height: 0px;
+    overflow: hidden;
+                  }
+            }
+        }
+    }
+      
+    
     .uxg-data-table{
         max-height: $uxg-table-max-height;
         max-width: inherit;

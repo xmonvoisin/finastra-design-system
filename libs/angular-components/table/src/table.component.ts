@@ -14,15 +14,24 @@ import { MatTable, PageEvent, MatCheckbox } from '@angular/material';
 
 import { UxgColumn, UxgSort, UxgPage, UxgColumnType, UxgTableSelectEvent, UxgDefaultPaging } from './utils';
 import { CdkDropList, moveItemInArray } from '@angular/cdk/drag-drop';
+import { trigger, state, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'uxg-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ]
 })
 export class TableComponent implements OnInit, OnDestroy, OnChanges {
   private uxgMultiSelectColumn = ['uxg-table-select-row'];
+  expandedElement: null;
 
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
 
