@@ -12,7 +12,10 @@ import {
   MatButtonModule,
   MatTableModule,
   MatExpansionModule,
-  MatBadgeModule
+  MatBadgeModule,
+  MatSortModule,
+  MatFormFieldModule,
+  MatInputModule
 } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,7 +38,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatTableModule,
     MatExpansionModule,
     MatListModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule 
     
   ]
 })

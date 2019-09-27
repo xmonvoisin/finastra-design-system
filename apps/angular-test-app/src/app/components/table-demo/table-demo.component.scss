@@ -1,10 +1,29 @@
-table {
-    width: 50%;
+
+.consent-component{
+  width: 50%;
+}
+.consent-top-bar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.consent-table{
+
+  width: 100%;
+
+
+  tr{
+    cursor: pointer;
+    &:nth-child(even){
+      background-color: transparent
+    }
   }
 
-
-  .mat-table tr:nth-child(even){
-    background-color: transparent
+  .add-button{
+    margin: 0px 0px 15px 90px;
+    
   }
 .applications-header{
   text-align: center;
@@ -44,6 +63,8 @@ table {
   .example-element-detail {
     overflow: hidden;
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
   
   .example-element-diagram {
@@ -95,4 +116,4 @@ table {
     align-items: center;
     justify-content: center;
   }
-
+}
